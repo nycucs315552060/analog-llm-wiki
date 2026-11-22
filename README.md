@@ -24,5 +24,3 @@ python3 scripts/validate.py
 ## 範圍聲明
 沒有使用 LLM Wiki 專用 SaaS、全文 ingest 或向量嵌入；目前為**可檢索的結構化 Wiki prototype**，再由該 Wiki 產生 HTML。網站不需要外部 JS/CDN。規則式檢查只保證資料結構/引用的一致性，非自動語義正確性證明。
 
-## GitHub Pages
-將全部檔案連同資料夾上傳 GitHub Repository → Settings → Pages → Deploy from a branch → main / (root)。網址通常為 `https://USERNAME.github.io/REPO/`，以 GitHub Pages 實際顯示的網址為準。
