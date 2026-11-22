@@ -1,0 +1,21 @@
+Analog LLM Wiki — validation run
+Date: 2026-11-22
+Counts: 7 sources, 7 wiki nodes, 13 slides
+
+PASS | 至少 5 篇 ingested 來源
+PASS | source ID 唯一
+PASS | 每個 source 有標題、摘要、facts、公開 URL
+PASS | Wiki ID 唯一
+PASS | 每個 Wiki 節點均有合法來源 ID
+PASS | 每個 Wiki 節點有解釋與注意事項
+PASS | 每張簡報都有合法 Wiki ID
+PASS | 簡報不少於 10 頁
+PASS | 所有 source 被 Wiki 引用
+PASS | 每個 Wiki 被簡報引用
+PASS | 教學簡報包含測驗
+PASS | HTML 產物存在
+PASS | HTML 內嵌資料並可離線閱讀
+PASS | 有工作流程說明
+
+Result: ALL PASS
+Note: Structural validation only; this does not assert complete semantic or browser correctness.

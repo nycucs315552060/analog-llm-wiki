@@ -1,0 +1,9 @@
+[
+{"id":"W01","title":"OTA 是什麼？","category":"基礎概念","sources":["S01","S02"],"definition":"OTA (Operational Transconductance Amplifier) 是把差動輸入電壓轉為輸出電流的放大器。","body":"簡化關係：Iout = Gm(Vin+ − Vin−)。Gm 是整個 OTA 的有效跨導，單位 S。若把 OTA 的輸出接到負載阻抗，就能將輸出電流轉換為電壓。","pitfall":"OTA 的原生輸出通常是電流；不能直接把它和所有電壓輸出 op amp 視為一樣。"},
+{"id":"W02","title":"MOSFET 的 gm 與 ro","category":"電晶體","sources":["S03"],"definition":"gm 是工作點附近 ∂Id/∂Vgs；ro 是工作點附近的輸出電阻。","body":"在小訊號與合適偏壓條件下，單級電壓增益量值常近似 gm × Rout；Rout 為輸出節點等效電阻，不一定只是一顆 MOSFET 的 ro。","pitfall":"gm × ro 只是特定簡化模型的近似，不能無條件套用到整個多級 OTA。"},
+{"id":"W03","title":"Two-stage OTA 的組成","category":"電路架構","sources":["S02","S05"],"definition":"兩級 OTA 常由差動輸入級及後續增益級組成，並可能加入補償網路。","body":"輸入級將差動訊號轉成電流/內部節點電壓，第二級放大訊號並驅動負載；實作時須兼顧偏壓、輸出擺幅與補償。","pitfall":"two-stage OTA 不等於必然穩定；仍須確認負回授條件與補償。"},
+{"id":"W04","title":"Gain、GBW 與 Phase Margin","category":"規格","sources":["S04","S05"],"definition":"Gain 是增益；GBW 是常用頻寬相關指標；PM 用來描述回授迴路的穩定裕度。","body":"增益可用 dB 表示：20 log10|Av|。對單主極點近似成立的系統，GBW 與低頻增益及頻寬有近似乘積關係。PM 應由 loop gain 的相位在 0 dB 交越頻率處求得。","pitfall":"不能只憑 GBW 判斷閉迴路穩定；PM 也不是所有 OTA 都能直接由 open-loop 增益曲線推得。"},
+{"id":"W05","title":"Transistor Sizing 是什麼？","category":"設計流程","sources":["S03","S06","S07"],"definition":"Transistor sizing 是在固定電路架構與製程條件下，調整 MOSFET 的 W、L 與偏壓等設計變數，以滿足規格。","body":"調整尺寸會改變偏壓、電容、gm、ro 與速度/功耗權衡。合理流程是定義規格→指定 PDK→初始化 W/L→SPICE 模擬→比較規格→調整重試。","pitfall":"加大 W 不保證 Gain、GBW、PM 都同時改善。"},
+{"id":"W06","title":"Netlist、PDK 與 SPICE","category":"工具","sources":["S06","S07"],"definition":"Netlist 描述元件與連接；PDK 提供製程元件/模型；SPICE 用模型計算電路響應。","body":"模擬中常以 DC 找偏壓工作點、AC 求小訊號頻率響應、Transient 檢查時域行為。模型與電路條件不同，數值不能直接類推。","pitfall":"示意公式不等於製程簽核結果；最後仍須根據正確 PDK 與 SPICE 驗證。"},
+{"id":"W07","title":"初學者的設計迴圈","category":"教學流程","sources":["S03","S04","S05","S07"],"definition":"規格→設計→模擬→檢查→調整是一個可重複的 sizing loop。","body":"先確認規格與單位，再檢查 DC 工作點是否合理，接著檢視 gain/GBW/PM/功耗；當某一項未達標時，應檢視造成限制的可能原因並再次模擬。","pitfall":"只檢查單一 spec 容易忽略其他規格惡化。"}
+]

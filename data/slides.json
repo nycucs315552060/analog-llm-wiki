@@ -1,0 +1,15 @@
+[
+{"title":"類比電路設計入門","eyebrow":"ANALOG DESIGN · LESSON 01","summary":"從 OTA 到 Transistor Sizing","points":["不用先會設計電晶體，也能理解整個流程","以 Two-stage OTA 當作教學案例"],"wiki":["W01","W03","W05"]},
+{"title":"今天會學到什麼？","eyebrow":"LEARNING MAP","summary":"先理解概念，再理解規格，最後看設計流程。","points":["01 OTA：輸入電壓如何變成輸出電流","02 MOSFET：gm、ro 與增益的關係","03 Two-stage OTA：為什麼需要多級放大","04 Gain、GBW、PM：怎麼看設計是否成功","05 Sizing：改 W/L、模擬與反覆驗證"],"wiki":["W01","W02","W03","W04","W05"]},
+{"title":"OTA 是什麼？","eyebrow":"CONCEPT 01","summary":"OTA 是把「輸入電壓差」轉為「輸出電流」的放大器。","formula":"Iout = Gm × (Vin+ − Vin−)","points":["Vin+、Vin−：差動輸入","Gm：有效跨導（A/V 或 S）","輸出電流流經負載阻抗後，就能產生輸出電壓"],"wiki":["W01"]},
+{"title":"MOSFET 如何產生增益？","eyebrow":"CONCEPT 02","summary":"小訊號分析用 gm 與 ro 描述 MOSFET 的局部行為。","formula":"|Av| ≈ gm × Rout","points":["gm：輸入電壓微小變化造成多少電流變化","ro：輸出端的等效小訊號電阻（單顆 MOSFET）","Rout：整個輸出節點的等效電阻；此式只適用於簡化單級模型"],"wiki":["W02"]},
+{"title":"Two-stage OTA 的訊號路徑","eyebrow":"ARCHITECTURE","summary":"第一級處理差動輸入，第二級增加增益並驅動負載。","points":["差動輸入級 → 內部節點 → 第二增益級 → 輸出","Bias 提供適當的工作電流","Compensation 控制頻率響應與穩定性"],"diagram":"stages","wiki":["W03"]},
+{"title":"規格 ① Gain 與 GBW","eyebrow":"PERFORMANCE","summary":"Gain 代表放大能力；GBW 關聯速度與頻寬。","formula":"Gain (dB) = 20 log₁₀|Av|","points":["DC Gain：低頻時放大訊號的能力","GBW：常用於描述單主極點補償放大器的速度","不能假設所有放大器都有相同的 gain × bandwidth 乘積"],"wiki":["W04"]},
+{"title":"規格 ② Phase Margin","eyebrow":"STABILITY","summary":"放大器有增益還不夠；回授後還要避免振盪。","points":["PM 在 loop gain 的 0 dB 交越頻率處定義","PM 太低可能造成振鈴或不穩定","補償電容可改變極點位置，影響 GBW 與 PM"],"wiki":["W04","W03"]},
+{"title":"Transistor Sizing 在做什麼？","eyebrow":"DESIGN LOOP","summary":"在既定拓樸與 PDK 下調整設計參數，以滿足多項性能規格。","points":["設計變數：W、L、Bias（依設計自由度）","評估指標：Gain、GBW、PM、Power 等","改大 W 不保證所有規格一起變好"],"wiki":["W05"]},
+{"title":"模擬工具：Netlist / PDK / SPICE","eyebrow":"TOOLS","summary":"電路的行為不能只靠公式猜測，需要依正確製程模型模擬。","points":["Netlist：列出元件、連接與參數","PDK：提供製程相依的裝置模型與限制","SPICE：用 DC、AC、Transient 等分析檢查設計"],"wiki":["W06"]},
+{"title":"Sizing 的完整 Loop","eyebrow":"WORKFLOW","summary":"每次修改參數後都要再次驗證所有相關規格。","diagram":"loop","points":["設定規格 → 設定 W/L 與偏壓 → SPICE 模擬","檢查 DC 工作點與 Gain / GBW / PM / Power","未達標 → 分析 trade-off → 修改參數 → 再模擬"],"wiki":["W05","W07"]},
+{"title":"實作案例：如何判斷要不要重試？","eyebrow":"THINK LIKE AN ENGINEER","summary":"以下是假設性教學範例，不是實測數據。","points":["目標：Gain ≥ 60 dB、GBW ≥ 10 MHz、PM ≥ 60°","假設結果：Gain = 65 dB、GBW = 12 MHz、PM = 45°","判斷：Gain / GBW 達標，但 PM 未達標；應檢查補償與相關 trade-off，再模擬"],"wiki":["W04","W05","W07"]},
+{"title":"快速測驗","eyebrow":"CHECK YOUR UNDERSTANDING","summary":"哪一個敘述最正確？","quiz":{"question":"把 MOSFET 的 W 加大，就一定能同時改善 Gain、GBW 和 PM？","options":["正確，尺寸越大越好","錯誤，規格間有權衡，需模擬驗證"],"correct":1,"explanation":"Sizing 會同時影響多項電氣特性，因此不能只靠單一參數方向推斷全部結果。"},"wiki":["W05","W07"]},
+{"title":"總結：從知識走向設計","eyebrow":"TAKEAWAYS","summary":"理解 OTA → 了解指標 → 用 PDK 與 SPICE 反覆驗證。","points":["OTA 用跨導把差動電壓轉換成電流","Gain、GBW、PM 分別描述不同的表現","Sizing 是受製程和多目標限制的迭代問題","每頁可以點擊「Wiki 依據」追查知識來源"],"wiki":["W01","W04","W05","W07"]}
+]
